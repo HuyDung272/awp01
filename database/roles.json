@@ -1,0 +1,3 @@
+{ "_id" : { "$oid" : "5c42a218af9616c9582a56d8" }, "rolename" : "Developer", "description" : "Show up tasks which need to be done" }
+{ "_id" : { "$oid" : "5c42a231af9616c9582a56d9" }, "rolename" : "Project manager", "description" : "display whole tasks in project/ manage tasks and assign them to developer" }
+{ "_id" : { "$oid" : "5c42a239af9616c9582a56da" }, "rolename" : "Admin", "description" : "who is manage system. Admin can manage users such as creating, modify and disable " }
