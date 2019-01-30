@@ -1,0 +1,106 @@
+<div *ngIf="auth.loggedIn">
+  <app-loading [condition]="isLoading"></app-loading>
+  <app-toast [message]="toast.message"></app-toast>
+
+  <mat-card *ngIf="!isLoading">
+    <!--
+        <md-button class="md-raised md-primary" ng-click="showAddUser($event)">
+        Create New User
+      </md-button>
+      -->
+    <div *ngIf="!auth.isDev">
+      <mat-card-title>
+        <a [routerLink]="['/projects']">Projects</a> \
+        <a [routerLink]="['/boards/', board.project_id]">Boards</a>
+      </mat-card-title>
+      <mat-card-subtitle>Project Name: {{projects[0].project_id}} </mat-card-subtitle>
+      <mat-card-subtitle>Project Manager: {{projects[0].manage_by.fullname}} </mat-card-subtitle>
+      <mat-card-subtitle>Board Name: {{board.board_id}} </mat-card-subtitle>
+
+      <mat-card-content>
+        <div class="button-row">
+          <button mat-raised-button color="primary" (click)="openDialog()" *ngIf="auth.isPM || auth.isAdmin">
+            Create new Task
+          </button>
+        </div>
+      </mat-card-content>
+    </div>
+    <mat-card-content>
+      <div class="example-container">
+        <div class="drag-column-header">
+          <h2>Open</h2>
+        </div>
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="opentasks" [cdkDropListConnectedTo]="[inprogressList]"
+          class="example-list example-list-on-hold" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of opentasks" cdkDrag>
+            <mat-card class="example-card">
+              <mat-toolbar color="primary">
+                <span>{{item.task_id}}</span>
+              </mat-toolbar>
+              <mat-toolbar>
+                Project: {{item.project_id.project_id}} <br> Board: {{item.board_id.board_id}}
+              </mat-toolbar>
+              <mat-card-subtitle>
+                <button mat-button color="primary" (click)="openUpdateDialog(item)">Info</button>
+              </mat-card-subtitle>
+            </mat-card>
+          </div>
+
+        </div>
+        <button mat-raised-button color="primary" (click)="openDialog()" *ngIf="auth.isPM || auth.isAdmin">
+          Create new Task
+        </button>
+
+      </div>
+
+      <div class="example-container">
+        <div class="drag-column-header">
+          <h2>In progress</h2>
+        </div>
+
+        <div cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogresstasks" [cdkDropListConnectedTo]="[todoList,doneList]"
+          class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of inprogresstasks" cdkDrag>
+            <mat-card class="example-card">
+              <mat-toolbar color="primary">
+                <span>{{item.task_id}}</span>
+              </mat-toolbar>
+              <mat-toolbar>
+                Project: {{item.project_id.project_id}} <br> Board: {{item.board_id.board_id}}
+              </mat-toolbar>
+
+              <mat-card-subtitle>
+                <button mat-button color="primary" (click)="openUpdateDialog(item)">Info</button>
+              </mat-card-subtitle>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <div class="drag-column-header">
+          <h2>Done</h2>
+        </div>
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="donetasks" [cdkDropListConnectedTo]="[inprogressList]"
+          class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of donetasks" cdkDrag>
+            <mat-card class="example-card">
+              <mat-toolbar color="primary">
+                <span>{{item.task_id}}</span>
+              </mat-toolbar>
+              <mat-toolbar>
+                Project: {{item.project_id.project_id}} <br> Board: {{item.board_id.board_id}}
+              </mat-toolbar>
+              <mat-card-subtitle>
+                <button mat-button color="primary" (click)="openUpdateDialog(item)">Info</button>
+              </mat-card-subtitle>
+            </mat-card>
+
+          </div>
+        </div>
+      </div>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>

@@ -1,0 +1,77 @@
+<app-toast [message]="toast.message"></app-toast>
+<mat-toolbar color="primary">
+  <span>TASK INFORMATION</span>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-header>TASK</mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput type="text" name="Task Name" [(ngModel)]="task.task_id" placeholder="Task Name" required
+        autofocus disabled>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="Project Name" [(ngModel)]="task.project_id.project_id" placeholder="Project Name" required
+        autofocus disabled>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="Board Name" [(ngModel)]="task.board_id.board_id" placeholder="Board Name" required
+        autofocus disabled>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" name="Description" [(ngModel)]="task.description" placeholder="Description" required
+          autofocus disabled>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" name="Developer" [(ngModel)]="task.developer_id.fullname" placeholder="Developer" required
+          autofocus disabled>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" name="Estimated" [(ngModel)]="task.estimated" placeholder="Estimated" required
+          autofocus disabled>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" name="Due Date" [(ngModel)]="task.due_date" placeholder="Due Date" required
+          autofocus disabled>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" name="Logged Date" [(ngModel)]="task.logged_date" placeholder="Logged Date" required
+          autofocus disabled>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" name="Progress" [(ngModel)]="task.progress" placeholder="Progress" required
+          autofocus disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="text" name="Create At" [(ngModel)]="task.create_at" placeholder="Create At" required
+          autofocus disabled>
+    </mat-form-field>
+
+
+    <!--
+              import * as mongoose from 'mongoose';
+
+const taskchema = new mongoose.Schema({
+  task_id: {type: String, required: true},
+  board_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Board', required: true },
+  project_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Project', required: true },
+  description: String,
+  developer_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  estimated: Date,
+  due_date: Date,
+  logged_date: Date,
+  progress: String,
+  create_by: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  create_at: Date
+});
+
+const Task = mongoose.model('Task', taskchema);
+
+export default Task;
+
+
+            -->
+
+  </mat-card-content>
+</mat-card>

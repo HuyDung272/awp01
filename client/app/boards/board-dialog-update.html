@@ -1,0 +1,55 @@
+<app-toast [message]="toast.message"></app-toast>
+<mat-toolbar color="primary">
+  <span>Update Board</span>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-header>Board</mat-card-header>
+  <mat-card-content>
+    <form #boardForm="ngForm" (ngSubmit)="save(board)">
+      <mat-form-field>
+        <input matInput type="text" name="Board Name" [(ngModel)]="board.board_id" placeholder="Board Name" required
+          autofocus>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" name="Description" [(ngModel)]="board.description" placeholder="Description"
+          required autofocus>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="start_date" placeholder="Choose a Start date" [(ngModel)]="board.start_date">
+        <mat-datepicker-toggle matSuffix [for]="start_date"></mat-datepicker-toggle>
+        <mat-datepicker #start_date></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="end_date" placeholder="Choose a End date" [(ngModel)]="board.end_date">
+        <mat-datepicker-toggle matSuffix [for]="end_date"></mat-datepicker-toggle>
+        <mat-datepicker #end_date></mat-datepicker>
+      </mat-form-field>
+
+
+
+      <!--
+              import * as mongoose from 'mongoose';
+
+const boardSchema = new mongoose.Schema({
+  board_id: { type: String, required: true },
+  project_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Project' },
+  description: String,
+  start_date: Date,
+  end_date: Date,
+  create_by: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  create_at: Date
+});
+
+const Board = mongoose.model('Board', boardSchema);
+
+export default Board;
+            -->
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!boardForm.form.valid">Save</button>
+    </form>
+  </mat-card-content>
+</mat-card>

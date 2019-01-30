@@ -1,0 +1,67 @@
+<app-loading [condition]="isLoading"></app-loading>
+<app-toast [message]="toast.message"></app-toast>
+
+<mat-card *ngIf="!isLoading">
+  <!--
+        <md-button class="md-raised md-primary" ng-click="showAddUser($event)">
+        Create New User
+      </md-button>
+      -->
+  <mat-card-title>List Users</mat-card-title>
+  <mat-card-content>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      Create new User
+    </button>
+  </mat-card-content>
+  <!--
+    Table
+  -->
+
+  <!--
+    Table
+  -->
+  <mat-card-content>
+    <mat-card-header>Registered users ({{users.length}})</mat-card-header>
+  </mat-card-content>
+  <mat-card-content>
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th>Full Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Create At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="users.length === 0">
+        <tr>
+          <td colspan="4">There are no registered users.</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.fullname}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.role}}</td>
+          <td>{{user.create_at}}</td>
+
+          <td>
+              <div class="button-row">
+                <button mat-mini-fab color="warn" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
+                  <mat-icon>close</mat-icon>
+                </button>
+                <button mat-mini-fab >
+                  <mat-icon>playlist_add</mat-icon>
+                </button>
+              </div>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </mat-card-content>
+
+</mat-card>

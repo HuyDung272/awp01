@@ -1,0 +1,74 @@
+<div *ngIf="auth.loggedIn">
+  <app-loading [condition]="isLoading"></app-loading>
+  <app-toast [message]="toast.message"></app-toast>
+
+  <mat-card *ngIf="!isLoading">
+    <!--
+        <md-button class="md-raised md-primary" ng-click="showAddUser($event)">
+        Create New User
+      </md-button>
+      -->
+
+    <mat-card-title>
+      <a [routerLink]="['/projects']">Projects</a>
+    </mat-card-title>
+    <mat-card-subtitle>Project Name: {{projects[0].project_id}} </mat-card-subtitle>
+    <mat-card-subtitle>Project Manager: {{projects[0].manage_by.fullname}} </mat-card-subtitle>
+
+    <mat-card-content>
+      <div class="button-row">
+        <button mat-raised-button color="primary" (click)="openDialog()" *ngIf="auth.isPM || auth.isAdmin">
+          Create new Board
+        </button>
+      </div>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-card-header>Boards: {{boards.length}}</mat-card-header>
+    </mat-card-content>
+    <mat-card-content>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-default">
+          <tr>
+            <th>Broad Name</th>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Create By</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="boards.length === 0">
+          <tr>
+            <td colspan="7">There are no board.</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr *ngFor="let board of boards">
+            <td>{{board.board_id}}</td>
+            <td>{{board.project_id.project_id}}</td>
+            <td>{{board.description}}</td>
+            <td>{{board.start_date}}</td>
+            <td>{{board.end_date}}</td>
+            <td>{{board.create_by.fullname}}</td>
+            <td>
+              <div class="button-row">
+                <button mat-mini-fab color="warn" (click)="deleteBoard(board)">
+                  <mat-icon>close</mat-icon>
+                </button>
+                <button mat-mini-fab (click)="openUpdateDialog(board)">
+                  <mat-icon>playlist_add</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" [routerLink]="['/tasks', board._id + '&' + board.project_id._id]">
+                  <mat-icon>zoom_out_map</mat-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>
