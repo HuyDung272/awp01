@@ -29,18 +29,6 @@
         <mat-datepicker #end_date></mat-datepicker>
       </mat-form-field>
 
-      <!--
-            const projectSchema = new mongoose.Schema({
-  project_id: { type: String, required: true },
-  description: String,
-  manage_by: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  start_date: Date,
-  end_date: Date,
-  create_by: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  create_at: Date
-});
-          -->
-
       <button mat-raised-button color="primary" type="submit" [disabled]="!projectForm.form.valid">Save</button>
     </form>
   </mat-card-content>

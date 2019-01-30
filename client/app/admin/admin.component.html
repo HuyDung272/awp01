@@ -2,11 +2,6 @@
 <app-toast [message]="toast.message"></app-toast>
 
 <mat-card *ngIf="!isLoading">
-  <!--
-        <md-button class="md-raised md-primary" ng-click="showAddUser($event)">
-        Create New User
-      </md-button>
-      -->
   <mat-card-title>List Users</mat-card-title>
   <mat-card-content>
     <button mat-raised-button color="primary" (click)="openDialog()">
@@ -49,15 +44,15 @@
           <td>{{user.create_at}}</td>
 
           <td>
-              <div class="button-row">
-                <button mat-mini-fab color="warn" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
-                  <mat-icon>close</mat-icon>
-                </button>
-                <button mat-mini-fab (click)="openUpdateDialog(user)" >
-                  <mat-icon>playlist_add</mat-icon>
-                </button>
-              </div>
-            </td>
+            <div class="button-row">
+              <button mat-mini-fab color="warn" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
+                <mat-icon>close</mat-icon>
+              </button>
+              <button mat-mini-fab (click)="openUpdateDialog(user)">
+                <mat-icon>playlist_add</mat-icon>
+              </button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>

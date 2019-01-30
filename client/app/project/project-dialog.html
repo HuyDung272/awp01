@@ -7,15 +7,7 @@
   <mat-card-header>Create new Project</mat-card-header>
   <mat-card-content>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
-      <!--
-          project_id: { type: String, required: true },
-  description: String,
-  manage_by: { type: mongoose.Schema.Types.ObjectId },
-  start_date: Date,
-  end_date: Date,
-  create_by: { type: mongoose.Schema.Types.ObjectId },
-  create_date: Date
-      -->
+
       <mat-form-field>
         <input matInput name="project_id" formControlName="project_id" placeholder="Project Name" autofocus>
       </mat-form-field>
@@ -27,9 +19,6 @@
       <mat-form-field>
         <mat-select formControlName="manage_by" placeholder="Project Manager">
           <mat-option *ngFor="let manage_by of pmUsers" [value]="manage_by._id"> {{manage_by.fullname}}</mat-option>
-          <!--<mat-option>None</mat-option>
-            <mat-option value="hr">HR</mat-option>
-            <mat-option value="admin">Admin</mat-option>-->
         </mat-select>
       </mat-form-field>
 
@@ -54,18 +43,4 @@
 
   </mat-card-content>
 </mat-card>
-<!--
-  <ol>
-        <li>
-          <mat-form-field>
-            <input matInput [(ngModel)]="name" placeholder="What's your name?">
-          </mat-form-field>
-        </li>
-        <li>
-          <button mat-raised-button (click)="openDialog()">Pick one</button>
-        </li>
-        <li *ngIf="animal">
-          You chose: <i>{{animal}}</i>
-        </li>
-      </ol>
--->
+

@@ -22,9 +22,6 @@
       <mat-form-field>
         <mat-select formControlName="role" placeholder="Role">
           <mat-option *ngFor="let role of roles" [value]="role.rolename"> {{role.rolename}}</mat-option>
-          <!--<mat-option>None</mat-option>
-          <mat-option value="hr">HR</mat-option>
-          <mat-option value="admin">Admin</mat-option>-->
         </mat-select>
       </mat-form-field>
 
@@ -35,18 +32,3 @@
 
 
 </mat-card>
-<!--
-  <ol>
-        <li>
-          <mat-form-field>
-            <input matInput [(ngModel)]="name" placeholder="What's your name?">
-          </mat-form-field>
-        </li>
-        <li>
-          <button mat-raised-button (click)="openDialog()">Pick one</button>
-        </li>
-        <li *ngIf="animal">
-          You chose: <i>{{animal}}</i>
-        </li>
-      </ol>
--->

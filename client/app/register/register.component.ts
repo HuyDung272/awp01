@@ -90,16 +90,6 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  // setClassUsername() {
-  //   return { 'has-danger': !this.username.pristine && !this.username.valid };
-  // }
-  // setClassEmail() {
-  //   return { 'has-danger': !this.email.pristine && !this.email.valid };
-  // }
-  // setClassPassword() {
-  //   return { 'has-danger': !this.password.pristine && !this.password.valid };
-  // }
-
   register() {
     this.registerForm.value.create_at = Date.now();
     this.userService.register(this.registerForm.value).subscribe(

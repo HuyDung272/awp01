@@ -3,11 +3,7 @@
   <app-toast [message]="toast.message"></app-toast>
 
   <mat-card *ngIf="!isLoading">
-    <!--
-        <md-button class="md-raised md-primary" ng-click="showAddUser($event)">
-        Create New User
-      </md-button>
-      -->
+
     <mat-card-title>Projects</mat-card-title>
     <mat-card-content>
       <button mat-raised-button matTooltip="Create" color="primary" (click)="openDialog()" *ngIf="!auth.isPM"
