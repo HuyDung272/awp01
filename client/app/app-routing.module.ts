@@ -7,7 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent, AdminUpdateDialogComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProjectComponent, ProjectDialogComponent, ProjectDialogUpdateComponent } from './project/project.component';
 import { BoardComponent, BoardDialogComponent, BoardDialogUpdateComponent } from './boards/board.component';
@@ -32,6 +32,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
   { path: 'admindialog', component: AdminDialogComponent,  canActivate: [AuthGuardAdmin]},
+  { path: 'admindialog', component: AdminUpdateDialogComponent,  canActivate: [AuthGuardAdmin]},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
   { path: 'boards/:id', component: BoardComponent },
   { path: 'boards/:id', component: BoardDialogComponent },

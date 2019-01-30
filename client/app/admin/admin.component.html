@@ -53,7 +53,7 @@
                 <button mat-mini-fab color="warn" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
                   <mat-icon>close</mat-icon>
                 </button>
-                <button mat-mini-fab >
+                <button mat-mini-fab (click)="openUpdateDialog(user)" >
                   <mat-icon>playlist_add</mat-icon>
                 </button>
               </div>

@@ -92,6 +92,18 @@ export class AdminComponent implements OnInit {
       });
     }
 
+    openUpdateDialog(user): void {
+      const dialogRef = this.dialog.open(AdminUpdateDialogComponent, {
+        width: '400px',
+        data: user
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.getUsers();
+      });
+    }
+
   ngOnInit() {
     this.getUsers();
     this.dataSource.paginator = this.paginator;
@@ -200,5 +212,37 @@ export class AdminDialogComponent implements OnInit {
       error => this.toast.setMessage('email already exists', 'danger')
     );
   }
+}
+
+@Component({
+  selector: 'app-admin',
+  templateUrl: './admin-dialog-update.html',
+  styleUrls: ['./admin.component.scss']
+})
+export class AdminUpdateDialogComponent implements OnInit {
+  isLoading = true;
+
+  constructor(private auth: AuthService,
+    public dialogRef: MatDialogRef<AdminUpdateDialogComponent>,
+    public toast: ToastComponent,
+    private userService: UserService,
+    @Inject(MAT_DIALOG_DATA) public user: any) { }
+
+
+
+  ngOnInit() {
+  }
+
+
+  save(user) {
+    this.userService.editUser(user).subscribe(
+      res => {
+        this.toast.setMessage('account settings saved!', 'success');
+      this.dialogRef.close();
+    },
+      error => console.log(error)
+    );
+  }
+
 }
 

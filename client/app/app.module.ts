@@ -35,7 +35,7 @@ import { BoardComponent, BoardDialogComponent, BoardDialogUpdateComponent } from
 import { TaskComponent, TaskDialogComponent, TaskDialogUpdateComponent } from './tasks/task.component';
 // tslint:disable-next-line:no-unused-expression
 import { DialogComponent } from './register/register.component';
-import { AdminDialogComponent } from './admin/admin.component';
+import { AdminDialogComponent, AdminUpdateDialogComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +51,7 @@ import { AdminDialogComponent } from './admin/admin.component';
     ProjectDialogComponent,
     DialogComponent,
     AdminDialogComponent,
+    AdminUpdateDialogComponent,
     BoardComponent,
     BoardDialogComponent,
     BoardDialogUpdateComponent,
